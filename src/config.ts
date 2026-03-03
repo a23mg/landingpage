@@ -1,41 +1,37 @@
 export const siteConfig = {
   /** First name */
-  name: "John",
+  name: "Munggorn",
   /** Last name / surname */
-  surname: "Doe",
+  surname: "Munggornkim",
   /** Nickname or alias */
-  nickname: "JD",
+  nickname: "Munggorn",
   /** URL to profile photo */
-  photoUrl: "https://api.dicebear.com/9.x/avataaars/svg?seed=John",
+  photoUrl: "https://api.dicebear.com/9.x/avataaars/svg?seed=Munggorn",
   /** Short bio / tagline for the About page */
-  bio: "A passionate developer who loves building things for the web.",
+  bio: "lazy coding😭😭.",
   /** Instagram profile URL (shown in footer) */
-  instagramUrl: "https://instagram.com/johndoe",
+  instagramUrl: "https://instagram.com/au23_mg",
   /** GitHub profile URL (shown in footer) */
-  githubUrl: "https://github.com/johndoe",
+  githubUrl: "https://github.com/a23mg",
   /** Email address for the contact section */
-  email: "hello@example.com",
+  email: "mg@rinme.me",
   /** daisyUI theme name — e.g. "light", "dark", "cupcake", etc. */
-  theme: "light",
+  theme: "dark",
   /** Experience entries shown on the Experience page */
   experience: [
     {
-      title: "Software Engineer",
-      company: "Acme Corp",
-      period: "2023 – Present",
+      title: "code noob",
+      company: "my home",
+      period: "Forever",
       description:
-        "Building scalable web applications with modern technologies.",
-    },
-    {
-      title: "Junior Developer",
-      company: "Startup Inc",
-      period: "2021 – 2023",
-      description:
-        "Developed front-end features and collaborated with cross-functional teams.",
-    },
+        "i build freaky code.",
+    }
   ],
   /** Skills shown on the About page */
   skills: [
+    "C"
+    "Python"
+    "Rust"
     "JavaScript",
     "TypeScript",
     "React",
