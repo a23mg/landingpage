@@ -1,0 +1,61 @@
+---
+import { siteConfig } from "../config";
+
+const greetings = [
+  `Hi, I'm ${siteConfig.name} ${siteConfig.surname}`,
+  `Welcome, I'm ${siteConfig.nickname}`,
+  `Hey there! I'm ${siteConfig.name}`,
+  `Hello! Call me ${siteConfig.nickname}`,
+  `Nice to meet you, I'm ${siteConfig.name} ${siteConfig.surname}`,
+];
+---
+
+<section class="hero min-h-[calc(100vh-68px)] bg-base-100">
+  <div class="hero-content flex-col-reverse lg:flex-row-reverse w-full max-w-6xl gap-8 lg:gap-16 px-4">
+    <div class="flex-shrink-0">
+      <div class="avatar">
+        <div class="w-48 h-48 lg:w-72 lg:h-72 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+          <img
+            src={siteConfig.photoUrl}
+            alt={`${siteConfig.name} ${siteConfig.surname}`}
+            class="object-cover w-full h-full"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="text-center lg:text-left">
+      <h1 id="greeting-text" class="text-4xl lg:text-5xl font-bold" data-greetings={JSON.stringify(greetings)}>
+        {greetings[0]}
+      </h1>
+      <p class="py-6 text-lg max-w-md">{siteConfig.bio}</p>
+      <div class="flex gap-4 justify-center lg:justify-start">
+        <a href="/about" class="btn btn-primary">About Me</a>
+        <a href="/#contact" class="btn btn-outline">Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const el = document.getElementById("greeting-text");
+  if (el) {
+    const greetings: string[] = JSON.parse(el.dataset.greetings || "[]");
+    if (greetings.length > 1) {
+      let idx = 0;
+      setInterval(() => {
+        idx = (idx + 1) % greetings.length;
+        el.style.opacity = "0";
+        setTimeout(() => {
+          el.textContent = greetings[idx];
+          el.style.opacity = "1";
+        }, 400);
+      }, 3000);
+    }
+  }
+</script>
+
+<style>
+  #greeting-text {
+    transition: opacity 0.4s ease-in-out;
+  }
+</style>
