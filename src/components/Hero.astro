@@ -39,10 +39,12 @@ const greetings = [
 <script>
   const el = document.getElementById("greeting-text");
   if (el) {
-    const greetings: string[] = JSON.parse(el.dataset.greetings || "[]");
+    const raw = el.dataset.greetings || "[]";
+    const parsed: unknown = JSON.parse(raw);
+    const greetings = Array.isArray(parsed) ? parsed.filter((g): g is string => typeof g === "string") : [];
     if (greetings.length > 1) {
       let idx = 0;
-      setInterval(() => {
+      const intervalId = setInterval(() => {
         idx = (idx + 1) % greetings.length;
         el.style.opacity = "0";
         setTimeout(() => {
@@ -50,6 +52,7 @@ const greetings = [
           el.style.opacity = "1";
         }, 400);
       }, 3000);
+      window.addEventListener("unload", () => clearInterval(intervalId));
     }
   }
 </script>
