@@ -29,9 +29,9 @@ export const siteConfig = {
   ],
   /** Skills shown on the About page */
   skills: [
-    "C"
-    "Python"
-    "Rust"
+    "C",
+    "Python",
+    "Rust",
     "JavaScript",
     "TypeScript",
     "React",
