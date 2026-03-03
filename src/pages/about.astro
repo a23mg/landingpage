@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { siteConfig } from "../config";
+---
+
+<Layout title={`About | ${siteConfig.name} ${siteConfig.surname}`}>
+  <section class="py-16 px-4 max-w-4xl mx-auto">
+    <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+      <div class="avatar">
+        <div class="w-40 h-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+          <img
+            src={siteConfig.photoUrl}
+            alt={`${siteConfig.name} ${siteConfig.surname}`}
+            class="object-cover w-full h-full"
+          />
+        </div>
+      </div>
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="text-4xl font-bold mb-4">About Me</h1>
+        <p class="text-lg leading-relaxed">{siteConfig.bio}</p>
+      </div>
+    </div>
+
+    <div class="divider my-10"></div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-6">Skills</h2>
+      <div class="flex flex-wrap gap-3">
+        {siteConfig.skills.map((skill) => (
+          <span class="badge badge-primary badge-lg">{skill}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
