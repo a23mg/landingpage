@@ -15,8 +15,6 @@ export const siteConfig = {
   githubUrl: "https://github.com/johndoe",
   /** Email address for the contact section */
   email: "hello@example.com",
-  /** daisyUI accent color (CSS color value) */
-  accentColor: "#570df8",
   /** daisyUI theme name — e.g. "light", "dark", "cupcake", etc. */
   theme: "light",
   /** Experience entries shown on the Experience page */

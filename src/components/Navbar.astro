@@ -1,10 +1,12 @@
 ---
 import { siteConfig } from "../config";
 
+const base = import.meta.env.BASE_URL;
+
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/experience", label: "Experience" },
+  { href: base, label: "Home" },
+  { href: `${base}about`, label: "About" },
+  { href: `${base}experience`, label: "Experience" },
 ];
 ---
 
@@ -20,17 +22,17 @@ const navLinks = [
         {navLinks.map((link) => (
           <li><a href={link.href}>{link.label}</a></li>
         ))}
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href={`${base}#contact`}>Contact</a></li>
       </ul>
     </div>
-    <a href="/" class="btn btn-ghost text-xl">{siteConfig.nickname}</a>
+    <a href={base} class="btn btn-ghost text-xl">{siteConfig.nickname}</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
       {navLinks.map((link) => (
         <li><a href={link.href}>{link.label}</a></li>
       ))}
-      <li><a href="/#contact">Contact</a></li>
+      <li><a href={`${base}#contact`}>Contact</a></li>
     </ul>
   </div>
   <div class="navbar-end">

@@ -29,8 +29,8 @@ const greetings = [
       </h1>
       <p class="py-6 text-lg max-w-md">{siteConfig.bio}</p>
       <div class="flex gap-4 justify-center lg:justify-start">
-        <a href="/about" class="btn btn-primary">About Me</a>
-        <a href="/#contact" class="btn btn-outline">Contact</a>
+        <a href={`${import.meta.env.BASE_URL}about`} class="btn btn-primary">About Me</a>
+        <a href={`${import.meta.env.BASE_URL}#contact`} class="btn btn-outline">Contact</a>
       </div>
     </div>
   </div>
