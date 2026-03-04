@@ -38,4 +38,14 @@
     opacity: 1;
     transform: none;
   }
+
+  #greeting-text {
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }

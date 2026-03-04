@@ -13,7 +13,7 @@ const greetings = [
 <section class="hero min-h-[calc(100vh-68px)] bg-gradient-to-br from-base-100 via-base-100 to-base-300/30 relative overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.6_0.25_270_/_0.08),transparent_60%)]"></div>
   <div class="hero-content flex-col-reverse lg:flex-row-reverse w-full max-w-6xl gap-10 lg:gap-20 px-4 relative z-10">
-    <div class="flex-shrink-0 animate-fade-in-up" style="animation-delay:0.2s">
+    <div class="flex-shrink-0 animate-fade-in-up" style="animation-delay: 0.2s;">
       <div class="avatar">
         <div class="w-48 h-48 lg:w-72 lg:h-72 rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-4 overflow-hidden avatar-glow transition-shadow duration-500 hover:shadow-[0_0_40px_8px_oklch(0.6_0.25_270_/_0.45)]">
           <img
@@ -43,7 +43,8 @@ const greetings = [
     const raw = el.dataset.greetings || "[]";
     const parsed: unknown = JSON.parse(raw);
     const greetings = Array.isArray(parsed) ? parsed.filter((g): g is string => typeof g === "string") : [];
-    if (greetings.length > 1) {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (greetings.length > 1 && !prefersReducedMotion) {
       let idx = 0;
       const intervalId = setInterval(() => {
         idx = (idx + 1) % greetings.length;
