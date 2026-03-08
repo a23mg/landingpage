@@ -34,33 +34,5 @@ const { title = `${siteConfig.name} ${siteConfig.surname}` } = Astro.props as Pr
 			<slot />
 		</main>
 		<Footer />
-		
-		<!-- Page transition overlay -->
-		<div id="page-transition" class="fixed inset-0 bg-[#0a0a0f] z-[9998] pointer-events-none opacity-0 transition-opacity duration-300"></div>
 	</body>
 </html>
-
-<script>
-	// Smooth page transitions
-	const pageTransition = document.getElementById("page-transition");
-	
-	document.querySelectorAll('a[href^="' + import.meta.env.BASE_URL + '"]').forEach((link) => {
-		link.addEventListener("click", (e) => {
-			const href = (link as HTMLAnchorElement).getAttribute("href");
-			if (href && !href.includes("#") && pageTransition) {
-				e.preventDefault();
-				pageTransition.style.opacity = "1";
-				setTimeout(() => {
-					window.location.href = href;
-				}, 300);
-			}
-		});
-	});
-
-	// Fade in on page load
-	window.addEventListener("load", () => {
-		if (pageTransition) {
-			pageTransition.style.opacity = "0";
-		}
-	});
-</script>

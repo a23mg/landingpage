@@ -3,6 +3,12 @@
 /* ── Custom fonts ── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+/* ── Smooth text rendering ── */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* ── Base styles ── */
 :root {
   --color-primary: oklch(0.7 0.2 270);
@@ -117,6 +123,28 @@ body {
   to { transform: scaleX(1); }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -137,6 +165,14 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* ── Stagger delays ── */
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }
@@ -150,6 +186,16 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 .glass-strong {
@@ -328,7 +374,7 @@ body {
   border-radius: 50%;
   filter: blur(80px);
   opacity: 0.5;
-  animation: float 20s ease-in-out infinite;
+  will-change: transform;
 }
 
 .orb-1 {
@@ -337,7 +383,6 @@ body {
   background: oklch(0.4 0.2 270 / 0.3);
   top: -200px;
   right: -200px;
-  animation-delay: 0s;
 }
 
 .orb-2 {
@@ -346,7 +391,6 @@ body {
   background: oklch(0.4 0.18 220 / 0.25);
   bottom: -100px;
   left: -100px;
-  animation-delay: -5s;
 }
 
 .orb-3 {
@@ -355,7 +399,6 @@ body {
   background: oklch(0.4 0.15 200 / 0.2);
   top: 50%;
   left: 50%;
-  animation-delay: -10s;
 }
 
 /* ── Text reveal animation ── */
@@ -392,13 +435,20 @@ body {
   color: white;
 }
 
+/* ── Loading state for images ── */
+img {
+  transition: opacity 0.3s ease;
+}
+
 /* ── Respect reduced motion preference ── */
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-up,
   .animate-fade-in-down,
   .animate-fade-in,
   .animate-scale-in,
-  .animate-float {
+  .animate-float,
+  .animate-slide-in-left,
+  .animate-slide-in-right {
     animation: none;
     opacity: 1;
     transform: none;
@@ -424,6 +474,10 @@ body {
   }
 
   .cursor-glow {
+    display: none;
+  }
+
+  .orb {
     display: none;
   }
 }
