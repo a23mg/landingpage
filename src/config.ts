@@ -15,5 +15,6 @@ export const siteConfig = {
   githubUrl: "https://github.com/a23mg",
   /** Email address for the contact section */
   email: "mg@rinme.me",
- 
+  /** Skills displayed on the About page */
+  skills: [] as string[],
 };
