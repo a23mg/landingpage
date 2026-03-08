@@ -10,52 +10,65 @@ const navLinks = [
 ];
 ---
 
-<header class="bg-gray-900/80 backdrop-blur-lg shadow-md sticky top-0 z-50 border-b border-gray-700/30">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 h-16">
-    <!-- Mobile menu button -->
-    <div class="lg:hidden relative">
-      <button
-        id="mobile-menu-btn"
-        type="button"
-        class="p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
-        aria-label="Toggle menu"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </button>
-      <ul
-        id="mobile-menu"
-        class="hidden absolute left-0 mt-2 w-52 bg-gray-800 rounded-lg shadow-lg p-2 space-y-1 z-50"
-      >
-        {navLinks.map((link) => (
-          <li>
-            <a href={link.href} class="block px-4 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">{link.label}</a>
-          </li>
-        ))}
-        <li>
-          <a href={`${base}#contact`} class="block px-4 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
-        </li>
-      </ul>
+<header class="fixed top-0 left-0 right-0 z-50 animate-fade-in-down">
+  <div class="mx-4 mt-4">
+    <div class="glass rounded-2xl max-w-6xl mx-auto">
+      <div class="flex items-center justify-between px-6 h-16">
+        <!-- Mobile menu button -->
+        <div class="lg:hidden relative">
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300"
+            aria-label="Toggle menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </button>
+          <ul
+            id="mobile-menu"
+            class="hidden absolute left-0 mt-3 w-56 glass rounded-xl p-2 space-y-1"
+          >
+            {navLinks.map((link) => (
+              <li>
+                <a href={link.href} class="block px-4 py-3 rounded-lg text-gray-300 hover:bg-white/5 hover:text-white transition-all duration-300">{link.label}</a>
+              </li>
+            ))}
+            <li>
+              <a href={`${base}#contact`} class="block px-4 py-3 rounded-lg text-gray-300 hover:bg-white/5 hover:text-white transition-all duration-300">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Brand -->
+        <a href={base} class="group flex items-center gap-2">
+          <span class="text-xl font-bold text-gradient-static tracking-tight">{siteConfig.nickname}</span>
+          <span class="w-2 h-2 rounded-full bg-purple-500 group-hover:scale-125 transition-transform duration-300"></span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <a href={link.href} class="nav-link text-gray-400 font-medium">{link.label}</a>
+          ))}
+          <a href={`${base}#contact`} class="nav-link text-gray-400 font-medium">Contact</a>
+        </nav>
+
+        <!-- GitHub icon -->
+        <a 
+          href={siteConfig.githubUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="icon-btn p-2 text-gray-400" 
+          aria-label="GitHub"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
     </div>
-
-    <!-- Brand -->
-    <a href={base} class="text-xl font-bold text-white hover:text-purple-400 transition-colors">{siteConfig.nickname}</a>
-
-    <!-- Desktop nav -->
-    <nav class="hidden lg:flex items-center gap-1">
-      {navLinks.map((link) => (
-        <a href={link.href} class="px-4 py-2 rounded-md text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">{link.label}</a>
-      ))}
-      <a href={`${base}#contact`} class="px-4 py-2 rounded-md text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">Contact</a>
-    </nav>
-
-    <!-- GitHub icon -->
-    <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full text-gray-300 hover:text-white hover:bg-gray-800 transition-colors" aria-label="GitHub">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-      </svg>
-    </a>
   </div>
 </header>
 

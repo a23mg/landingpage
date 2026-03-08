@@ -19,13 +19,48 @@ const { title = `${siteConfig.name} ${siteConfig.surname}` } = Astro.props as Pr
 		<link rel="icon" type="image/svg+xml" href={import.meta.env.BASE_URL + "favicon.svg"} />
 		<link rel="icon" href={import.meta.env.BASE_URL + "favicon.ico"} />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={`Portfolio of ${siteConfig.name} ${siteConfig.surname} - ${siteConfig.bio}`} />
+		<meta name="theme-color" content="#0a0a0f" />
+		
+		<!-- Preconnect to Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
 		<title>{title}</title>
 	</head>
-	<body class="min-h-screen flex flex-col bg-gray-900 text-gray-100">
+	<body class="min-h-screen flex flex-col bg-[#0a0a0f] text-gray-100 grain-overlay antialiased">
 		<Navbar />
 		<main class="flex-1">
 			<slot />
 		</main>
 		<Footer />
+		
+		<!-- Page transition overlay -->
+		<div id="page-transition" class="fixed inset-0 bg-[#0a0a0f] z-[9998] pointer-events-none opacity-0 transition-opacity duration-300"></div>
 	</body>
 </html>
+
+<script>
+	// Smooth page transitions
+	const pageTransition = document.getElementById("page-transition");
+	
+	document.querySelectorAll('a[href^="' + import.meta.env.BASE_URL + '"]').forEach((link) => {
+		link.addEventListener("click", (e) => {
+			const href = (link as HTMLAnchorElement).getAttribute("href");
+			if (href && !href.includes("#") && pageTransition) {
+				e.preventDefault();
+				pageTransition.style.opacity = "1";
+				setTimeout(() => {
+					window.location.href = href;
+				}, 300);
+			}
+		});
+	});
+
+	// Fade in on page load
+	window.addEventListener("load", () => {
+		if (pageTransition) {
+			pageTransition.style.opacity = "0";
+		}
+	});
+</script>
