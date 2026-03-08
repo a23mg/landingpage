@@ -15,8 +15,6 @@ export const siteConfig = {
   githubUrl: "https://github.com/a23mg",
   /** Email address for the contact section */
   email: "mg@rinme.me",
-  /** daisyUI theme name — e.g. "light", "dark", "cupcake", etc. */
-  theme: "dark",
   /** Experience entries shown on the Experience page */
   experience: [
     {

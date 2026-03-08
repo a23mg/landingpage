@@ -12,7 +12,7 @@ const { title = `${siteConfig.name} ${siteConfig.surname}` } = Astro.props as Pr
 ---
 
 <!doctype html>
-<html lang="en" data-theme={siteConfig.theme} class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +21,7 @@ const { title = `${siteConfig.name} ${siteConfig.surname}` } = Astro.props as Pr
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="min-h-screen flex flex-col">
+	<body class="min-h-screen flex flex-col bg-gray-900 text-gray-100">
 		<Navbar />
 		<main class="flex-1">
 			<slot />
