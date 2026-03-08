@@ -27,6 +27,46 @@ body {
   overflow-x: hidden;
 }
 
+/* ── Custom cursor (desktop only) ── */
+@media (min-width: 1024px) and (pointer: fine) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: none;
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, oklch(0.75 0.2 350), oklch(0.7 0.22 330));
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: transform 0.15s ease-out, opacity 0.2s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+  will-change: transform;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.visible {
+  opacity: 1;
+}
+
+.custom-cursor.hover {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid oklch(0.75 0.2 350);
+}
+
 /* ── Smooth scrollbar ── */
 ::-webkit-scrollbar {
   width: 8px;
@@ -216,10 +256,10 @@ body {
 /* ── Gradient heading text ── */
 .text-gradient {
   background: linear-gradient(
-    135deg, 
-    oklch(0.85 0.15 270), 
-    oklch(0.75 0.2 230), 
-    oklch(0.8 0.18 200)
+    135deg,
+    oklch(0.75 0.2 350),
+    oklch(0.7 0.22 330),
+    oklch(0.78 0.18 10)
   );
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
@@ -229,7 +269,7 @@ body {
 }
 
 .text-gradient-static {
-  background: linear-gradient(135deg, oklch(0.8 0.18 270), oklch(0.75 0.16 220));
+  background: linear-gradient(135deg, oklch(0.75 0.2 350), oklch(0.7 0.18 330));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -475,6 +515,20 @@ img {
 
   .cursor-glow {
     display: none;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: auto;
   }
 
   .orb {

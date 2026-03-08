@@ -1,17 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { siteConfig } from "../config";
+import { education } from "../modules/education";
 ---
 
-<Layout title={`Experience | ${siteConfig.name} ${siteConfig.surname}`}>
+<Layout title={`Education | ${siteConfig.name} ${siteConfig.surname}`}>
   <section class="py-16 px-4 max-w-4xl mx-auto">
-    <h1 class="text-4xl font-extrabold text-gradient mb-10 text-center animate-fade-in-up">Experience</h1>
+    <h1 class="text-4xl font-extrabold text-gradient mb-10 text-center animate-fade-in-up">Education</h1>
 
     <div class="relative">
       <!-- Vertical line -->
       <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-purple-500/30 -translate-x-1/2"></div>
 
-      {siteConfig.experience.map((exp, i) => (
+      {education.map((exp, i) => (
         <div class={`relative flex flex-col md:flex-row items-start mb-10 animate-fade-in-up ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`} style={`animation-delay: ${i * 0.15}s;`}>
           <!-- Timeline dot -->
           <div class="absolute left-4 md:left-1/2 -translate-x-1/2 mt-1">

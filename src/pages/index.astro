@@ -1,40 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { siteConfig } from "../config";
-
-const greetings = [
-  `Hi, I'm ${siteConfig.name} ${siteConfig.surname}`,
-  `Welcome, I'm ${siteConfig.nickname}`,
-  `Hey there! I'm ${siteConfig.name}`,
-  `Hello! Call me ${siteConfig.nickname}`,
-  `Nice to meet you, I'm ${siteConfig.name} ${siteConfig.surname}`,
-];
-
-const skills = [
-  "JavaScript", "TypeScript", "React", "Vue", "Node.js", "Python",
-  "TailwindCSS", "PostgreSQL", "MongoDB", "AWS", "Docker", "Git"
-];
-
-const experiences = [
-  {
-    title: "Senior Developer",
-    company: "Tech Company",
-    period: "2022 - Present",
-    description: "Leading development of modern web applications with cutting-edge technologies."
-  },
-  {
-    title: "Full Stack Developer",
-    company: "Digital Agency",
-    period: "2020 - 2022",
-    description: "Built scalable web solutions for various clients across different industries."
-  },
-  {
-    title: "Junior Developer",
-    company: "Startup Inc",
-    period: "2018 - 2020",
-    description: "Developed and maintained frontend applications using React and Vue.js."
-  }
-];
+import { greetings } from "../modules/greetings";
+import { skills } from "../modules/skills";
+import { education } from "../modules/education";
 ---
 
 <Layout>
@@ -143,11 +112,11 @@ const experiences = [
           </p>
           
           <div class="pt-4">
-            <a 
-              href="#experience" 
+            <a
+              href="#education"
               class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors duration-300 group"
             >
-              <span class="link-hover">View my experience</span>
+              <span class="link-hover">View my education</span>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -173,22 +142,22 @@ const experiences = [
     </div>
   </section>
 
-  <!-- Experience Section -->
-  <section id="experience" class="min-h-screen relative py-32 overflow-hidden">
+  <!-- Education Section -->
+  <section id="education" class="min-h-screen relative py-32 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/5 to-transparent pointer-events-none"></div>
-    
+
     <div class="max-w-6xl mx-auto px-6 relative z-10">
       <div class="scroll-reveal opacity-0 translate-y-12">
         <p class="text-purple-400 font-medium tracking-widest uppercase text-sm mb-4">My journey</p>
-        <h2 class="text-4xl lg:text-6xl font-bold text-gradient mb-16">Experience</h2>
+        <h2 class="text-4xl lg:text-6xl font-bold text-gradient mb-16">Education</h2>
       </div>
-      
+
       <div class="relative">
         <!-- Timeline line -->
         <div class="absolute left-0 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500/50 via-purple-500/20 to-transparent transform lg:-translate-x-1/2"></div>
-        
+
         <div class="space-y-16">
-          {experiences.map((exp, index) => (
+          {education.map((exp, index) => (
             <div class={`relative flex flex-col lg:flex-row gap-8 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
               <!-- Timeline dot -->
               <div class="absolute left-0 lg:left-1/2 w-4 h-4 rounded-full bg-purple-500 border-4 border-[#0a0a0f] transform lg:-translate-x-1/2 z-10 timeline-dot"></div>

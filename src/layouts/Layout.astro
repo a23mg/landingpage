@@ -34,5 +34,52 @@ const { title = `${siteConfig.name} ${siteConfig.surname}` } = Astro.props as Pr
 			<slot />
 		</main>
 		<Footer />
+		<div id="custom-cursor" class="custom-cursor hidden lg:block"></div>
+
+		<script>
+			const cursor = document.getElementById("custom-cursor");
+			if (cursor) {
+				const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+				const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+				if (!prefersReducedMotion && !isCoarsePointer) {
+					let mouseX = 0;
+					let mouseY = 0;
+
+					document.addEventListener("mousemove", (e) => {
+						mouseX = e.clientX;
+						mouseY = e.clientY;
+						if (!cursor.classList.contains("visible")) {
+							cursor.classList.add("visible");
+						}
+						requestAnimationFrame(() => {
+							cursor.style.transform = `translate(${mouseX - cursor.offsetWidth / 2}px, ${mouseY - cursor.offsetHeight / 2}px)`;
+						});
+					});
+
+					document.addEventListener("mouseleave", () => {
+						cursor.classList.remove("visible");
+					});
+
+					document.addEventListener("mouseenter", () => {
+						cursor.classList.add("visible");
+					});
+
+					document.addEventListener("mouseover", (e) => {
+						const target = e.target as HTMLElement;
+						if (target.closest("a, button, [role='button'], input, textarea, select, .magnetic-btn")) {
+							cursor.classList.add("hover");
+						}
+					});
+
+					document.addEventListener("mouseout", (e) => {
+						const target = e.target as HTMLElement;
+						if (target.closest("a, button, [role='button'], input, textarea, select, .magnetic-btn")) {
+							cursor.classList.remove("hover");
+						}
+					});
+				}
+			}
+		</script>
 	</body>
 </html>

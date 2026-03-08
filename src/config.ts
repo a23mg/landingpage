@@ -6,35 +6,14 @@ export const siteConfig = {
   /** Nickname or alias */
   nickname: "Munggorn",
   /** URL to profile photo */
-  photoUrl: "https://api.dicebear.com/9.x/avataaars/svg?seed=Munggorn",
+  photoUrl: "https://files.catbox.moe/5x7s6v.jpg",
   /** Short bio / tagline for the About page */
   bio: "lazy coding😭😭.",
   /** Instagram profile URL (shown in footer) */
-  instagramUrl: "https://instagram.com/au23_mg",
+  instagramUrl: "https://instagram.com/23au_mg",
   /** GitHub profile URL (shown in footer) */
   githubUrl: "https://github.com/a23mg",
   /** Email address for the contact section */
   email: "mg@rinme.me",
-  /** Experience entries shown on the Experience page */
-  experience: [
-    {
-      title: "code noob",
-      company: "my home",
-      period: "Forever",
-      description:
-        "i build freaky code.",
-    }
-  ],
-  /** Skills shown on the About page */
-  skills: [
-    "C",
-    "Python",
-    "Rust",
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Astro",
-    "Tailwind CSS",
-    "Node.js",
-  ],
+ 
 };
